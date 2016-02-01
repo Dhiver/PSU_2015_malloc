@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Mon Feb 01 18:19:55 2016 Bastien DHIVER
+** Last update Mon Feb 01 18:25:21 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -53,7 +53,8 @@ void			merge_block(t_block blk)
 	  blk->size += tmp->size + META_SIZE;
 	  set_next_and_prev(tmp);
 	}
-      else if ((t_block)tmp->ptr - META_SIZE == (t_block)blk->ptr + blk->size && tmp->free)
+      else if ((t_block)tmp->ptr - META_SIZE ==
+	       (t_block)blk->ptr + blk->size && tmp->free)
 	{
 	  blk->size += tmp->size + META_SIZE;
 	  set_next_and_prev(tmp);
