@@ -5,14 +5,14 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Wed Jan 27 15:24:21 2016 Bastien DHIVER
-## Last update Wed Jan 27 15:49:20 2016 Bastien DHIVER
+## Last update Mon Feb 01 15:51:05 2016 Bastien DHIVER
 ##
 
 CC	= gcc
 
 RM	= rm -f
 
-CFLAGS	+= -W -Wall -Wextra -ansi -pedantic
+CFLAGS	+= -W -Wall -Wextra -pedantic
 CFLAGS	+= -Werror
 CFLAGS	+= -fPIC
 CFLAGS	+= -I./include/
@@ -26,7 +26,9 @@ NAME	= libmy_malloc.so
 SRCS	= $(SRCF)malloc.c		\
 	  $(SRCF)free.c			\
 	  $(SRCF)realloc.c		\
-	  $(SRCF)show_alloc_mem.c
+	  $(SRCF)show_alloc_mem.c	\
+	  $(SRCF)utils_block.c		\
+	  $(SRCF)utils.c
 
 OBJS	= $(SRCS:.c=.o)
 
