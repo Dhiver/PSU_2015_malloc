@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:00 2016 Bastien DHIVER
-** Last update Mon Feb 01 18:19:29 2016 Bastien DHIVER
+** Last update Mon Feb 01 23:18:42 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -18,7 +18,6 @@ void		*malloc(size_t size)
   t_block	new;
   t_block	last;
 
-  /*printf("Notre malloc, META_SIZE = %ld\n", META_SIZE);*/
   if (!start_point)
     {
       if (!(new = create_block(size)))
@@ -33,6 +32,8 @@ void		*malloc(size_t size)
   if (!(new = find_block(&last, size)))
     if (!(new = create_block(size)))
       return (NULL);
+  last->next = new;
+  new->prev = last;
   split_block(new, size);
   end_point = new;
   new->free = 0;
