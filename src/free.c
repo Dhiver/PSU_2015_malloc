@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Mon Feb 01 18:19:27 2016 Bastien DHIVER
+** Last update Mon Feb 01 23:21:04 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -19,11 +19,8 @@ void		free(void *ptr)
   if (!(tmp = get_block(ptr)) && tmp->free)
     return ;
   tmp->free = 1;
-  /*printf("end_point = %p, tmp = %p\n", end_point, (void *)tmp);*/
   merge_block(tmp);
   if (tmp == end_point)
-    {
-      if (tmp->prev)
-	end_point = tmp->prev;
-    }
+    if (tmp->prev)
+      end_point = tmp->prev;
 }
