@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Mon Feb 01 16:00:17 2016 Bastien DHIVER
+** Last update Mon Feb 01 18:19:55 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -15,7 +15,7 @@ t_block			create_block(size_t size)
   t_block		out;
 
   out = sbrk(0);
-  printf("out = %p\n", (void*)out);
+  /*printf("out = %p and get_memory_size = %ld\n", (void*)out, get_memory_size(size + META_SIZE));*/
   if (sbrk(get_memory_size(size + META_SIZE)) == (void *)-1)
     return (NULL);
   out->size = size;

@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 11:59:58 2016 Bastien DHIVER
-** Last update Mon Feb 01 15:26:42 2016 Bastien DHIVER
+** Last update Mon Feb 01 18:12:48 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -23,10 +23,10 @@ size_t		get_memory_size(size_t size)
 
 t_block		get_block(void *ptr)
 {
-  char		*tmp;
+  t_block	tmp;
 
-  tmp = ptr;
-  return (ptr = tmp -= META_SIZE);
+  tmp = (t_block)ptr - META_SIZE;
+  return (tmp);
 }
 
 bool		check_addr(void *ptr)
@@ -45,4 +45,24 @@ void		set_next_and_prev(t_block tmp)
     tmp->prev->next = tmp->next;
   if (!tmp->next)
     tmp->next->prev = tmp->prev;
+}
+
+void		free_memory(void)
+{
+  t_block	tmp;
+  size_t	page_size;
+
+  page_size = getpagesize();
+  tmp = end_point;
+  if (tmp->size >= page_size)
+    {
+      if (tmp->size == page_size)
+	  if ((size_t)tmp / page_size ==
+	      ((size_t)tmp + tmp->size + META_SIZE) / page_size)
+	    {
+	      end_point = tmp->prev;
+	      brk(tmp);
+	      return ;
+	    }
+    }
 }
