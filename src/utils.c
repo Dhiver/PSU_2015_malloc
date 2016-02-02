@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 11:59:58 2016 Bastien DHIVER
-** Last update Mon Feb 01 18:12:48 2016 Bastien DHIVER
+** Last update Tue Feb 02 16:35:23 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -23,10 +23,7 @@ size_t		get_memory_size(size_t size)
 
 t_block		get_block(void *ptr)
 {
-  t_block	tmp;
-
-  tmp = (t_block)ptr - META_SIZE;
-  return (tmp);
+  return ((t_block)ptr - META_SIZE);
 }
 
 bool		check_addr(void *ptr)
