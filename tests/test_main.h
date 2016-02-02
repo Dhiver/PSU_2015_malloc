@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:40 2016 Bastien DHIVER
-** Last update Tue Feb 02 15:53:30 2016 Bastien DHIVER
+** Last update Tue Feb 02 16:18:32 2016 Bastien DHIVER
 */
 
 #ifndef	TEST_MAIN_H_
@@ -15,5 +15,6 @@
 # include "malloc.h"
 
 void		tests_get_memory_size(void);
+void		tests_check_addr(void);
 
 #endif /* !TEST_MAIN_H_ */

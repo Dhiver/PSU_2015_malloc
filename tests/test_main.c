@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:05 2016 Bastien DHIVER
-** Last update Tue Feb 02 15:57:01 2016 Bastien DHIVER
+** Last update Tue Feb 02 16:27:30 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -13,6 +13,7 @@
 int	main(void)
 {
   tests_get_memory_size();
+  tests_check_addr();
   printf("\033[32;1m OK !\033[0m\n");
   return (0);
 }

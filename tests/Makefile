@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Tue Feb 02 15:45:14 2016 Bastien DHIVER
-## Last update Tue Feb 02 16:14:51 2016 Bastien DHIVER
+## Last update Tue Feb 02 16:17:16 2016 Bastien DHIVER
 ##
 
 CC	= gcc
@@ -24,6 +24,7 @@ NOWHERE	= /dev/null
 
 SRCS	= $(SRCF)test_main.c			\
 	  $(SRCF)tests_get_memory_size.c	\
+	  $(SRCF)tests_check_addr.c		\
 
 OBJS	= $(SRCS:.c=.o)
 
