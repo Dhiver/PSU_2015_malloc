@@ -29,7 +29,9 @@ SRCS	= $(SRCF)malloc.c		\
 	  $(SRCF)realloc.c		\
 	  $(SRCF)show_alloc_mem.c	\
 	  $(SRCF)utils_block.c		\
-	  $(SRCF)utils.c
+	  $(SRCF)utils.c           \
+	  $(SRCF)utils_page.c           
+      
 
 OBJS	= $(SRCS:.c=.o)
 

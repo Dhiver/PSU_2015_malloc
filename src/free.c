@@ -13,6 +13,7 @@
 void		free(void *ptr)
 {
   t_block	tmp;
+  size_t    nb_page;
 
   if (!ptr || !check_addr(ptr))
     return ;
@@ -21,6 +22,18 @@ void		free(void *ptr)
   tmp->free = 1;
   merge_block(tmp);
   if (tmp == end_point)
+  {
     if (tmp->prev)
       end_point = tmp->prev;
+    else
+        {
+            end_point = NULL;
+            brk(start_point);
+            start_point = NULL;
+            return ;
+        }
+    nb_page  = get_nb_page(tmp);
+    brk((char*)start_point + (nb_page * getpagesize()));
+    return ;
+  }
 }

@@ -10,20 +10,11 @@
 
 #include "malloc.h"
 
-size_t		get_nb_pages(void)
+size_t		get_nb_page(t_block tmp)
 {
-  t_block	tmp;
-  size_t	i;
-  size_t	j;
-
-  tmp = start_point;
-  i = 0;
-  while (tmp)
-    {
-      j = ((size_t)tmp + tmp->size + META_SIZE) / getpagesize();
-      if (j > i)
-	i = j;
-      tmp = tmp->next;
-    }
-  return (i);
+    size_t	j;
+    j = ((char*)tmp - (char*)start_point) / getpagesize();
+    if((((char*)tmp - (char*)start_point) % getpagesize()) > 0)
+        j += 1;
+    return (j);
 }

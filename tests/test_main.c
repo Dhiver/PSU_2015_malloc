@@ -21,7 +21,7 @@ void	reset_env(void)
   reset_end_and_start_points();
 }
 
-int	main(void)
+int     main(void)
 {
   tests_get_memory_size();
   reset_env();
@@ -32,6 +32,8 @@ int	main(void)
   tests_find_block();
   reset_env();
   tests_check_addr();
+  reset_env();
+  tests_free();
   reset_env();
   printf("\033[32;1m OK !\033[0m\n");
   return (0);

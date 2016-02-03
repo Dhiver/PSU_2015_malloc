@@ -37,7 +37,7 @@ size_t			get_memory_size(size_t);
 void			set_next_and_prev(t_block);
 void			free_memory(void);
 
-size_t			get_nb_pages(void);
+size_t			get_nb_page(t_block);
 
 t_block			create_block(size_t);
 t_block			find_block(t_block *, size_t);

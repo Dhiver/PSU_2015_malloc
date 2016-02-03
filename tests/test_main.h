@@ -19,5 +19,6 @@ void		tests_check_addr(void);
 void		tests_create_block(void);
 void		tests_find_block(void);
 void		tests_split_block(void);
+void        tests_free(void);
 
 #endif /* !TEST_MAIN_H_ */

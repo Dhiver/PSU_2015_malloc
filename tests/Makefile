@@ -29,6 +29,7 @@ SRCS	= $(SRCF)test_main.c			\
 	  $(SRCF)tests_create_block.c		\
 	  $(SRCF)tests_find_block.c		\
 	  $(SRCF)tests_split_block.c		\
+	  $(SRCF)tests_free.c		
 
 OBJS	= $(SRCS:.c=.o)
 
