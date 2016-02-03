@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:40 2016 Bastien DHIVER
-** Last update Wed Feb 03 09:41:44 2016 Bastien DHIVER
+** Last update Wed Feb 03 14:29:03 2016 Bastien DHIVER
 */
 
 #ifndef	TEST_MAIN_H_
@@ -20,5 +20,6 @@ void		tests_create_block(void);
 void		tests_find_block(void);
 void		tests_split_block(void);
 void        tests_free(void);
+void		tests_malloc(void);
 
 #endif /* !TEST_MAIN_H_ */
