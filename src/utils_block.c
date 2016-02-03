@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Tue Feb 02 17:03:00 2016 Bastien DHIVER
+** Last update Wed Feb 03 13:50:23 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -19,7 +19,7 @@ t_block			create_block(size_t size)
     return (NULL);
   out->size = size;
   out->free = 1;
-  out->ptr = out + META_SIZE;
+  out->ptr = (char *)out + META_SIZE;
   out->prev = end_point;
   out->next = NULL;
   end_point = out;
@@ -31,9 +31,11 @@ t_block		find_block(t_block *ptr, size_t size)
   t_block	tmp;
 
   tmp = start_point;
+  if (ptr)
+    *ptr = NULL;
   while (tmp && !(tmp->free && tmp->size >= size))
     {
-      if (ptr)
+      if (ptr && tmp)
 	*ptr = tmp;
       tmp = tmp->next;
     }
@@ -77,20 +79,28 @@ void			copy_block(t_block old_blk, t_block new_blk)
     }
 }
 
-void			split_block(t_block blk, size_t size)
+bool		split_block(t_block blk, size_t size)
 {
-  t_block		new;
+  t_block	new;
 
-  if (blk->size == size || blk->size - size < META_SIZE)
-    return ;
-  new = blk + META_SIZE + size;
-  new->size = size - blk->size - META_SIZE;
+  if (!blk || size > blk->size + META_SIZE || (int)(blk->size - size) < (int)META_SIZE)
+    return (FALSE);
+  new = (t_block)((char *)blk + META_SIZE + size);
+  new->size = blk->size - META_SIZE - size;
+  blk->size = size;
   new->free = 1;
-  new->ptr = blk + (blk->size - new->size);
+  new->ptr = (t_block)((char *)new + META_SIZE);
+  if (blk->next)
+    {
+      blk->next->prev = new;
+      new->next = blk->next;
+    }
+  else
+    new->next = NULL;
   new->prev = blk;
-  new->next = blk->next;
   blk->next = new;
   if (blk == end_point)
     end_point = new;
+  return (TRUE);
 }
 

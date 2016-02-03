@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:48:04 2016 Bastien DHIVER
-** Last update Mon Feb 01 23:26:40 2016 Bastien DHIVER
+** Last update Wed Feb 03 12:28:36 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -19,10 +19,11 @@ void		show_alloc_mem(void)
   tmp = start_point;
   while (tmp)
     {
-      if (tmp->free && (tmp = tmp->next))
-	continue;
-      printf("%p - %p : ", tmp->ptr, (char *)tmp->ptr + tmp->size);
-      printf("%ld bytes\n", tmp->size);
+      if (tmp->free == 1)
+	{
+	  printf("%p - %p : ", tmp->ptr, (char *)tmp->ptr + tmp->size);
+	  printf("%ld bytes\n", tmp->size);
+	}
       tmp = tmp->next;
     }
 }

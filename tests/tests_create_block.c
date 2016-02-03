@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Tue Feb 02 16:49:09 2016 Bastien DHIVER
+** Last update Wed Feb 03 09:08:55 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -21,7 +21,7 @@ void		tests_create_block(void)
   tmp = create_block(magic_size);
   assert(tmp->size == magic_size);
   assert(tmp->free == 1);
-  assert(tmp->ptr == tmp + META_SIZE);
+  assert(tmp->ptr == (char *)tmp + META_SIZE);
   assert(tmp->prev == old_end_point);
   assert(tmp->next == NULL);
   assert(end_point = tmp);
