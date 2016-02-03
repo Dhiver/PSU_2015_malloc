@@ -23,7 +23,7 @@ size_t		get_memory_size(size_t size)
 
 t_block		get_block(void *ptr)
 {
-  return ((t_block)ptr - META_SIZE);
+  return ((t_block)((char*)ptr - META_SIZE));
 }
 
 bool		check_addr(void *ptr)
