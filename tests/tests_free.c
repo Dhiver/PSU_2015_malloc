@@ -5,21 +5,24 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Wed Feb 03 09:08:55 2016 Bastien DHIVER
+** Last update Wed Feb 03 17:15:17 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
 
 void    tests_free()
 {
-  char *	tmp;
-  char *	tmp2;
-  size_t    page; 
+  char	*tmp;
+  char	*tmp2;
+  char	*tmp3;
 
-  tmp = malloc(4096);
-  tmp2 = malloc(8195);
-  page= get_nb_page((t_block)(tmp2 - META_SIZE));
-
-  (void)tmp;
-  (void)page;
+  tmp = malloc(42);
+  free(tmp);
+  assert(start_point == NULL);
+  assert(end_point == NULL);
+  tmp = malloc(4097);
+  assert(start_point == (t_block)((char *)tmp - META_SIZE));
+  tmp2 = malloc(500);
+  tmp3 = malloc(4000);
+  free(tmp3);
 }
