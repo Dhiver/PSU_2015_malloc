@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Wed Jan 27 15:24:21 2016 Bastien DHIVER
-## Last update Wed Feb 03 11:33:24 2016 Bastien DHIVER
+## Last update Wed Feb 03 16:54:04 2016 Bastien DHIVER
 ##
 
 CC	= gcc
@@ -29,7 +29,7 @@ SRCS	= $(SRCF)malloc.c		\
 	  $(SRCF)realloc.c		\
 	  $(SRCF)show_alloc_mem.c	\
 	  $(SRCF)utils_block.c		\
-	  $(SRCF)utils.c           \
+	  $(SRCF)utils.c           	\
 	  $(SRCF)utils_page.c           
       
 
