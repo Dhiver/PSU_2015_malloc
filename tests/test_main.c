@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:05 2016 Bastien DHIVER
-** Last update Thu Feb 04 12:00:34 2016 Bastien DHIVER
+** Last update Thu Feb 04 14:52:52 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -31,15 +31,15 @@ int     main(void)
   reset_env();
   tests_split_block();
   reset_env();
-  /*tests_find_block();*/
-  /*reset_env();*/
-  /*tests_check_addr();*/
-  /*reset_env();*/
-  /*tests_malloc();*/
+  tests_find_block();
+  reset_env();
+  tests_check_addr();
+  reset_env();
+  tests_malloc();
+  reset_env();
+  /*tests_merge_block();*/
   /*reset_env();*/
   /*tests_free();*/
-  /*reset_env();*/
-  /*tests_merge_block();*/
   /*reset_env();*/
   printf("\033[32;1m OK !\033[0m\n");
   return (0);
