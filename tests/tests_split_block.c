@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Feb 03 09:40:45 2016 Bastien DHIVER
-** Last update Thu Feb 04 17:17:34 2016 Bastien DHIVER
+** Last update Fri Feb 05 00:16:56 2016 Bastien DHIVER
 */
 
 #include <stdlib.h>
@@ -32,11 +32,11 @@ void		tests_split_block(void)
   tmp_next = tmp->next;
   old_tmp_size = tmp->size;
   ast(split_block(tmp, magic_size) == TRUE);
-  splited_blk = (t_block)((char *)tmp + META_SIZE +
-			  align_size(magic_size));
+  splited_blk = (t_block)((char *)tmp + META_SIZE
+			  + align_size(magic_size));
   ast(tmp->size == align_size(magic_size));
-  ast(splited_blk->size == old_tmp_size - (align_size(magic_size) +
-					   META_SIZE));
+  ast(splited_blk->size == old_tmp_size - (align_size(magic_size)
+					   + META_SIZE));
   ast(splited_blk->free == 1);
   ast(splited_blk->ptr == (t_block)((char *)splited_blk + META_SIZE));
   ast(splited_blk->prev == tmp);
