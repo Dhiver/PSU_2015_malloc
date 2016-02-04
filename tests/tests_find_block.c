@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:50:38 2016 Bastien DHIVER
-** Last update Thu Feb 04 13:46:13 2016 Bastien DHIVER
+** Last update Thu Feb 04 14:25:13 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -30,7 +30,7 @@ void		tests_find_block(void)
   ast(find_block(NULL, 20) == tmp);
   ast(find_block(&tmp_last, 0) == tmp);
   ast(tmp_last == NULL);
-  ast(find_block(&tmp_last, 51) == tmp2);
+  ast(find_block(&tmp_last, 59) == tmp2);
   ast(tmp_last == tmp);
   ast(start_point == tmp);
   ast(end_point == tmp3);
