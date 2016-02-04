@@ -5,11 +5,24 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Feb 03 14:23:22 2016 Bastien DHIVER
-** Last update Wed Feb 03 16:28:46 2016 Bastien DHIVER
+** Last update Thu Feb 04 13:46:34 2016 Bastien DHIVER
 */
 
 #include <string.h>
 #include "test_main.h"
+
+void		tests_malloc_again(char *tmp, char *tmp2)
+{
+  ast(((t_block)((char *)tmp2 - META_SIZE))->next == NULL);
+  ast(((t_block)((char *)tmp2 - META_SIZE))->free == 0);
+  ast(start_point == (char *)tmp - META_SIZE);
+  ast((char *)start_point + META_SIZE == tmp);
+  ast((char *)start_point + META_SIZE ==
+	 ((t_block)((char *)tmp - META_SIZE))->ptr);
+  ast((char *)start_point + META_SIZE + 7 ==
+	 (char *)tmp + ((t_block)((char *)tmp - META_SIZE))->size);
+  /*ast((char *)start_point + META_SIZE + 7 + 1 == (char *)tmp2 - META_SIZE);*/
+}
 
 void		tests_malloc(void)
 {
@@ -24,18 +37,17 @@ void		tests_malloc(void)
   tmp[4] = 'i';
   tmp[5] = 'e';
   tmp[6] = '\0';
-  assert(strcmp(tmp, "zombie") == 0);
-  assert(start_point == tmp - META_SIZE);
-  assert(end_point == tmp - META_SIZE);
-  assert(((t_block)((char *)tmp - META_SIZE))->next == NULL);
-  assert(((t_block)((char *)tmp - META_SIZE))->prev == NULL);
+  ast(strcmp(tmp, "zombie") == 0);
+  ast(start_point == tmp - META_SIZE);
+  ast(end_point == tmp - META_SIZE);
+  ast(((t_block)((char *)tmp - META_SIZE))->next == NULL);
+  ast(((t_block)((char *)tmp - META_SIZE))->prev == NULL);
   tmp2 = malloc(42);
-  assert(start_point == tmp - META_SIZE);
-  assert(end_point == tmp2 - META_SIZE);
-  assert(((t_block)((char *)tmp2 - META_SIZE))->prev ==
+  ast(start_point == tmp - META_SIZE);
+  ast(end_point == tmp2 - META_SIZE);
+  ast(((t_block)((char *)tmp2 - META_SIZE))->prev ==
 	 (t_block)((char *)tmp - META_SIZE));
-  assert(((t_block)((char *)tmp - META_SIZE))->next ==
+  ast(((t_block)((char *)tmp - META_SIZE))->next ==
 	 (t_block)((char *)tmp2 - META_SIZE));
-  assert(((t_block)((char *)tmp2 - META_SIZE))->next == NULL);
-  assert(((t_block)((char *)tmp2 - META_SIZE))->free == 0);
+  tests_malloc_again(tmp, tmp2);
 }

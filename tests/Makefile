@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Tue Feb 02 15:45:14 2016 Bastien DHIVER
-## Last update Wed Feb 03 17:18:50 2016 Bastien DHIVER
+## Last update Thu Feb 04 12:43:15 2016 Bastien DHIVER
 ##
 
 CC	= gcc
@@ -24,13 +24,16 @@ NAME	= run_for_tests
 NOWHERE	= /dev/null
 
 SRCS	= $(SRCF)test_main.c			\
-	  $(SRCF)tests_get_memory_size.c	\
 	  $(SRCF)tests_check_addr.c		\
 	  $(SRCF)tests_create_block.c		\
 	  $(SRCF)tests_find_block.c		\
 	  $(SRCF)tests_split_block.c		\
 	  $(SRCF)tests_malloc.c			\
-	  $(SRCF)tests_free.c
+	  $(SRCF)tests_free.c			\
+	  $(SRCF)tests_merge_block.c		\
+	  $(SRCF)tests_align_size.c		\
+	  $(SRCF)tests_align_page.c		\
+	  $(SRCF)my_assert.c
 
 OBJS	= $(SRCS:.c=.o)
 
