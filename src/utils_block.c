@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Thu Feb 04 16:49:17 2016 Bastien DHIVER
+** Last update Thu Feb 04 17:24:00 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -62,7 +62,7 @@ void			merge_block(t_block blk)
 	    end_point = blk;
 	  if (tmp->next)
 	    tmp->next->prev = blk;
-	  blk->size += tmp->size + META_SIZE + align_size(1);
+	  blk->size += tmp->size + META_SIZE;
 	}
       else if (tmp->free && blk ==
 	       (t_block)((char *)tmp + tmp->size + META_SIZE))
@@ -72,7 +72,7 @@ void			merge_block(t_block blk)
 	    end_point = tmp;
 	  if (blk->next)
 	    blk->next->prev = tmp;
-	  tmp->size += blk->size + META_SIZE + align_size(1);
+	  tmp->size += blk->size + META_SIZE;
 	}
       tmp = tmp->next;
     }
@@ -98,7 +98,7 @@ bool		split_block(t_block blk, size_t size)
   size_t	splited_blk_size;
 
   size = align_size(size);
-  splited_blk_size = size + META_SIZE + align_size(1);
+  splited_blk_size = size + META_SIZE;
   if (!blk || blk->size < splited_blk_size)
     return (FALSE);
   new = (t_block)((char *)blk + splited_blk_size);
