@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:17:42 2016 Bastien DHIVER
-** Last update Thu Feb 04 13:45:29 2016 Bastien DHIVER
+** Last update Thu Feb 04 14:37:12 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -16,11 +16,12 @@ void		tests_check_addr(void)
 
   ast(start_point == NULL);
   ast(check_addr(NULL) == FALSE);
-  ptr = malloc(42);
+  ptr = create_block(42);
+  start_point = ptr;
   ast(check_addr(NULL) == FALSE);
   ast(check_addr((void *)-1) == FALSE);
   ast(check_addr(sbrk(0)) == FALSE);
   ast(check_addr((t_block)sbrk(0) + 1) == FALSE);
-  ast(check_addr(ptr) == TRUE);
-  ast(check_addr(ptr - META_SIZE) == FALSE);
+  ast(check_addr((t_block)((char *)ptr + META_SIZE)) == TRUE);
+  ast(check_addr(ptr) == FALSE);
 }
