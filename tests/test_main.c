@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:05 2016 Bastien DHIVER
-** Last update Thu Feb 04 15:16:17 2016 Bastien DHIVER
+** Last update Thu Feb 04 15:48:16 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -35,12 +35,12 @@ int     main(void)
   reset_env();
   tests_check_addr();
   reset_env();
-  tests_malloc();
-  reset_env();
   tests_get_nb_page();
   reset_env();
-  /*tests_merge_block();*/
-  /*reset_env();*/
+  tests_merge_block();
+  reset_env();
+  tests_malloc();
+  reset_env();
   /*tests_free();*/
   /*reset_env();*/
   printf("\033[32;1m OK !\033[0m\n");
