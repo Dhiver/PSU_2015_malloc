@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Thu Feb 04 14:26:59 2016 Bastien DHIVER
+** Last update Thu Feb 04 15:27:51 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -23,6 +23,8 @@ t_block			create_block(size_t size)
   out->free = 1;
   out->ptr = (char *)out + META_SIZE;
   out->prev = end_point;
+  if (end_point)
+    ((t_block)end_point)->next = out;
   out->next = NULL;
   end_point = out;
   return (out);
