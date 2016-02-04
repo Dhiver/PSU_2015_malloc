@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:00 2016 Bastien DHIVER
-** Last update Mon Feb 01 23:18:42 2016 Bastien DHIVER
+** Last update Thu Feb 04 11:14:55 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -30,8 +30,8 @@ void		*malloc(size_t size)
     }
   last = end_point;
   if (!(new = find_block(&last, size)))
-    if (!(new = create_block(size)))
-      return (NULL);
+      if (!(new = create_block(size)))
+	return (NULL);
   last->next = new;
   new->prev = last;
   split_block(new, size);

@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Wed Jan 27 15:24:21 2016 Bastien DHIVER
-## Last update Wed Feb 03 16:54:04 2016 Bastien DHIVER
+## Last update Thu Feb 04 10:34:22 2016 Bastien DHIVER
 ##
 
 CC	= gcc
@@ -30,9 +30,9 @@ SRCS	= $(SRCF)malloc.c		\
 	  $(SRCF)show_alloc_mem.c	\
 	  $(SRCF)utils_block.c		\
 	  $(SRCF)utils.c           	\
-	  $(SRCF)utils_page.c           
+	  $(SRCF)utils_page.c           \
+	  $(SRCF)align.c
       
-
 OBJS	= $(SRCS:.c=.o)
 
 

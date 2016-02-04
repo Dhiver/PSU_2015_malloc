@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:36:19 2016 Bastien DHIVER
-** Last update Wed Feb 03 09:50:58 2016 Bastien DHIVER
+** Last update Thu Feb 04 10:55:36 2016 Bastien DHIVER
 */
 
 #ifndef MALLOC_H_
@@ -33,7 +33,7 @@ void			show_alloc_mem(void);
 
 bool			check_addr(void *);
 t_block			get_block(void *);
-size_t			get_memory_size(size_t);
+size_t			align_page(size_t);
 void			set_next_and_prev(t_block);
 void			free_memory(void);
 
@@ -44,5 +44,8 @@ t_block			find_block(t_block *, size_t);
 void			merge_block(t_block);
 void			copy_block(t_block, t_block);
 bool			split_block(t_block, size_t);
+
+size_t			align_size(size_t);
+size_t			align_page(size_t);
 
 #endif /* !MALLOC_H_ */
