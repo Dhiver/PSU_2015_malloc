@@ -5,18 +5,38 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Thu Feb 04 12:29:30 2016 Bastien DHIVER
-** Last update Thu Feb 04 13:43:37 2016 Bastien DHIVER
+** Last update Fri Feb 05 00:31:54 2016 Bastien DHIVER
 */
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <execinfo.h>
 #include "my_assert.h"
 
-void		my_assert(int state, const char *file, int line, const char *fct)
+void	__ast_print_nbr(size_t nb)
 {
-  if (!state)
-    printf("\033[31;1m KO! \033[0min %s on %d by %s\n", file, line, fct);
-  else
-    printf("\033[32;1m OK! \033[0min %s : %d by %s\n", file, line, fct);
+  char	value;
+
+  if (nb < 10)
+    {
+      value = nb + 48;
+      write(1, &value, 1);
+      return ;
+    }
+  __ast_print_nbr(nb / 10);
+  value = (nb % 10) + 48;
+  write(1, &value, 1);
+  return ;
+}
+
+int	__ast(const char *file, size_t line, const char *fct, const char *e)
+{
+  write(1, program_invocation_short_name, \
+	strlen(program_invocation_short_name));
+  write(1, ": ", 2);
+  write(1, file, strlen(file));
+  __ast_print_nbr(line);
+  write(1, ": ", 2);
+  write(1, fct, strlen(fct));
+  write(1, ": Assertion `", 13);
+  write(1, e, strlen(e));
+  write(1, "' failed.\n", 10);
+  exit(1);
 }
