@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 17:15:46 2016 Bastien DHIVER
-** Last update Wed Feb 03 16:42:26 2016 Bastien DHIVER
+** Last update Thu Feb 04 15:00:18 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -13,8 +13,9 @@
 size_t		get_nb_page(t_block tmp)
 {
     size_t	j;
+
     j = ((char*)tmp - (char*)start_point) / getpagesize();
     if ((((char*)tmp - (char*)start_point) % getpagesize()) > 0)
-        j += 1;
+      j += 1;
     return (j);
 }
