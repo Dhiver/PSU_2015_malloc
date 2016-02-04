@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:05 2016 Bastien DHIVER
-** Last update Thu Feb 04 14:52:52 2016 Bastien DHIVER
+** Last update Thu Feb 04 15:16:17 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -36,6 +36,8 @@ int     main(void)
   tests_check_addr();
   reset_env();
   tests_malloc();
+  reset_env();
+  tests_get_nb_page();
   reset_env();
   /*tests_merge_block();*/
   /*reset_env();*/

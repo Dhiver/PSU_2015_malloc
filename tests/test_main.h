@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:40 2016 Bastien DHIVER
-** Last update Thu Feb 04 12:40:39 2016 Bastien DHIVER
+** Last update Thu Feb 04 14:59:07 2016 Bastien DHIVER
 */
 
 #ifndef	TEST_MAIN_H_
@@ -23,5 +23,6 @@ void		tests_free(void);
 void		tests_merge_block(void);
 void		tests_align_size(void);
 void		tests_align_page(void);
+void		tests_get_nb_page(void);
 
 #endif /* !TEST_MAIN_H_ */
