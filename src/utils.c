@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 11:59:58 2016 Bastien DHIVER
-** Last update Thu Feb 04 10:54:45 2016 Bastien DHIVER
+** Last update Thu Feb 04 16:51:34 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -24,14 +24,6 @@ bool		check_addr(void *ptr)
     return (TRUE);
   else
     return (FALSE);
-}
-
-void		set_next_and_prev(t_block tmp)
-{
-  if (!tmp->prev)
-    tmp->prev->next = tmp->next;
-  if (!tmp->next)
-    tmp->next->prev = tmp->prev;
 }
 
 void		free_memory(void)
