@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Thu Feb 04 15:27:51 2016 Bastien DHIVER
+** Last update Thu Feb 04 16:49:17 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -19,7 +19,7 @@ t_block			create_block(size_t size)
   new_size = align_page(align_size(size) + META_SIZE);
   if (sbrk(new_size) == (void *)-1)
     return (NULL);
-  out->size = new_size;
+  out->size = new_size - META_SIZE;
   out->free = 1;
   out->ptr = (char *)out + META_SIZE;
   out->prev = end_point;
@@ -52,19 +52,27 @@ void			merge_block(t_block blk)
   t_block		tmp;
 
   tmp = start_point;
-  while (tmp && tmp->next)
+  while (tmp)
     {
-      if ((char *)tmp->ptr + tmp->size + META_SIZE == (char *)blk - META_SIZE && tmp->free)
+      if ((t_block)((char *)blk + blk->size + META_SIZE) ==
+	  tmp && tmp->free)
 	{
-	  blk->ptr = tmp->ptr;
-	  blk->size += tmp->size + META_SIZE;
-	  set_next_and_prev(tmp);
+	  blk->next = tmp->next;
+	  if (!blk->next)
+	    end_point = blk;
+	  if (tmp->next)
+	    tmp->next->prev = blk;
+	  blk->size += tmp->size + META_SIZE + align_size(1);
 	}
-      else if ((char *)tmp->ptr - META_SIZE ==
-	       (char *)blk->ptr + blk->size && tmp->free)
+      else if (tmp->free && blk ==
+	       (t_block)((char *)tmp + tmp->size + META_SIZE))
 	{
-	  blk->size += tmp->size + META_SIZE;
-	  set_next_and_prev(tmp);
+	  tmp->next = blk->next;
+	  if (!tmp->next)
+	    end_point = tmp;
+	  if (blk->next)
+	    blk->next->prev = tmp;
+	  tmp->size += blk->size + META_SIZE + align_size(1);
 	}
       tmp = tmp->next;
     }
