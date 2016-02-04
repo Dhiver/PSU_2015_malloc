@@ -23,17 +23,19 @@ void		free(void *ptr)
   merge_block(tmp);
   if (tmp == end_point)
   {
-    if (tmp->prev)
-      end_point = tmp->prev;
-    else
+    nb_page  = get_nb_page(tmp);
+    if (nb_page * getpagesize() == tmp->size)
+    {
+        if (tmp->prev)
+            end_point = tmp->prev;
+        else
         {
             end_point = NULL;
             brk(start_point);
             start_point = NULL;
             return ;
         }
-    nb_page  = get_nb_page(tmp);
+    }
     brk((char*)start_point + (nb_page * getpagesize()));
-    return ;
   }
 }
