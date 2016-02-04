@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:00 2016 Bastien DHIVER
-** Last update Thu Feb 04 15:28:45 2016 Bastien DHIVER
+** Last update Thu Feb 04 15:50:20 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -31,6 +31,7 @@ void		*malloc(size_t size)
   if (!(new = find_block(&last, size)))
       if (!(new = create_block(size)))
 	return (NULL);
+  merge_block(new);
   split_block(new, size);
   new->free = 0;
   return (new->ptr);
