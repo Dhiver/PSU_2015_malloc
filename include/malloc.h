@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:36:19 2016 Bastien DHIVER
-** Last update Thu Feb 04 10:55:36 2016 Bastien DHIVER
+** Last update Thu Feb 04 14:12:28 2016 Bastien DHIVER
 */
 
 #ifndef MALLOC_H_
@@ -30,6 +30,7 @@ void			*malloc(size_t);
 /*void			*realloc(void *, size_t);*/
 void			free(void *);
 void			show_alloc_mem(void);
+void			show_alloc_mem_free(void);
 
 bool			check_addr(void *);
 t_block			get_block(void *);
