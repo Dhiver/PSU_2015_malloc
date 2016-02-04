@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Thu Feb 04 13:55:08 2016 Bastien DHIVER
+** Last update Thu Feb 04 14:26:59 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -32,12 +32,13 @@ t_block		find_block(t_block *ptr, size_t size)
 {
   t_block	tmp;
 
+  size = align_size(size);
   tmp = start_point;
   if (ptr)
     *ptr = NULL;
   while (tmp && !(tmp->free && tmp->size >= size))
     {
-      if (ptr && tmp)
+      if (tmp)
 	*ptr = tmp;
       tmp = tmp->next;
     }
