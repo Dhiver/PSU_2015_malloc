@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Thu Feb 04 14:58:15 2016 Bastien DHIVER
-** Last update Thu Feb 04 16:26:46 2016 Bastien DHIVER
+** Last update Thu Feb 04 18:39:42 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -24,6 +24,5 @@ void		tests_get_nb_page(void)
   ast(get_nb_page(tmp) == 1);
   ast(get_nb_page(tmp2) == 1);
   ast(get_nb_page(tmp3) == 2);
-  (void)tmp4;
-  /*ast(get_nb_page(tmp4) == ???);*/
+  ast(get_nb_page(tmp4) == 1);
 }

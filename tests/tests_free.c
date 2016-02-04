@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Thu Feb 04 13:46:25 2016 Bastien DHIVER
+** Last update Thu Feb 04 18:46:35 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -15,12 +15,15 @@ void    tests_free()
   char	*tmp;
   char	*tmp3;
 
-  tmp = malloc(42);
-  free(tmp);
-  ast(start_point == NULL);
-  ast(end_point == NULL);
+  /*tmp = malloc(42);*/
+  /*free(tmp);*/
+  /*ast(start_point == NULL);*/
+  /*ast(end_point == NULL);*/
   tmp = malloc(4097);
   ast(start_point == (t_block)((char *)tmp - META_SIZE));
   tmp3 = malloc(4000);
+  free(tmp);
   free(tmp3);
+  (void)tmp3;
+  show_alloc_mem_all();
 }

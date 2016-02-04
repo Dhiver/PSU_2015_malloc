@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Thu Feb 04 17:05:02 2016 Bastien DHIVER
+** Last update Thu Feb 04 18:10:17 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -20,23 +20,21 @@ void		free(void *ptr)
   if (!(tmp = get_block(ptr)) && tmp->free)
     return ;
   tmp->free = 1;
-  show_alloc_mem_all();
-  merge_block(tmp->next);
-  show_alloc_mem_all();
-  if (tmp == ((t_block)end_point)->prev && ((t_block)end_point)->free)
+  merge_block(tmp);
+  printf("end_point = %p\n", end_point);
+  printf("tmp = %p\n", (void *)tmp);
+  if (tmp == end_point && tmp->free)
   {
-    printf("toto\n");
     nb_page  = get_nb_page(tmp) + 1;
-    printf("get_nb_page = %ld\n", nb_page);
-    printf("tmp->size = %ld\n", tmp->size);
     if (nb_page * getpagesize() - META_SIZE == tmp->size)
     {
-      printf("toto 2\n");
+      printf("toto 1\n");
         if (tmp->prev)
             end_point = tmp->prev;
         else
         {
             end_point = NULL;
+	    printf("toto\n");
             brk(start_point);
             start_point = NULL;
             return ;
