@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Feb 03 14:23:22 2016 Bastien DHIVER
-** Last update Thu Feb 04 14:52:40 2016 Bastien DHIVER
+** Last update Thu Feb 04 15:29:25 2016 Bastien DHIVER
 */
 
 #include <string.h>
@@ -13,6 +13,10 @@
 
 void		tests_malloc_again(char *tmp, char *tmp2)
 {
+
+  char		*tmp3;
+  char		*tmp4;
+
   ast(((t_block)((char *)tmp2 - META_SIZE))->next == end_point);
   ast(((t_block)((char *)tmp2 - META_SIZE))->free == 0);
   ast(start_point == (char *)tmp - META_SIZE);
@@ -23,6 +27,10 @@ void		tests_malloc_again(char *tmp, char *tmp2)
 	 (char *)tmp + ((t_block)((char *)tmp - META_SIZE))->size);
   ast((char *)start_point + META_SIZE + align_size(7) + align_size(1) ==
       (char *)tmp2 - META_SIZE);
+  tmp3 = malloc(4000);
+  tmp4 = malloc(20);
+  (void)tmp4;
+  ast(((t_block)(tmp3 - META_SIZE))->free == 0);
 }
 
 void		tests_malloc(void)
