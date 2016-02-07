@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:00 2016 Bastien DHIVER
-** Last update Thu Feb 04 18:44:32 2016 Bastien DHIVER
+** Last update Fri Feb 05 10:07:30 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -29,16 +29,8 @@ void		*malloc(size_t size)
       return (new->ptr);
     }
   if (!(new = find_block(&last, size)))
-    {
-      printf("in find\n");
-      if (!(new = create_block(size)))
-	return (NULL);
-      else
-	printf("nop !\n");
-    }
-  else
-    printf("not in find\n");
-  /*merge_block(new);*/
+    if (!(new = create_block(size)))
+      return (NULL);
   split_block(new, size);
   new->free = 0;
   return (new->ptr);
