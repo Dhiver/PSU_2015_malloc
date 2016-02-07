@@ -7,3 +7,5 @@
 - [ ] Create block merge avec dernier end\_point
 - [ ] Réaliser un main de test
 - [ ] Au départ, le break point est-il au tout début de la heap ?
+- [ ] Remove -g flag
+- [ ] Test on a 32 bit arch
