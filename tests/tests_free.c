@@ -5,10 +5,36 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Mon Feb 08 13:37:35 2016 Bastien DHIVER
+** Last update Mon Feb 08 14:48:52 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
+
+void    tests_free_again2(char *tmp, char *tmp2)
+{
+  int		i;
+
+  start_point = NULL;
+  end_point = NULL;
+  tmp = malloc(568);
+  tmp2 = malloc(42);
+  free(tmp2);
+  tmp2 = malloc(1457664);
+  free(tmp2);
+  tmp2 = malloc(5242880);
+  free(tmp2);
+  tmp2 = malloc(2);
+  i = 1;
+  while (i <= 1024)
+    {
+      tmp2 = malloc(i);
+      i *= 2;
+    }
+  tmp2 = malloc(12288);
+  show_alloc_mem_all();
+  (void)tmp;
+  (void)tmp2;
+}
 
 void    tests_free_again(char *tmp, char *tmp2, char *tmp3, void *old_break)
 {
@@ -29,6 +55,7 @@ void    tests_free_again(char *tmp, char *tmp2, char *tmp3, void *old_break)
   ast(start_point == NULL);
   ast(end_point == NULL);
   ast(sbrk(0) == old_break);
+  tests_free_again2(tmp, tmp2);
 }
 
 void    tests_free()
