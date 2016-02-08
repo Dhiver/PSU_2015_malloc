@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Sun Feb 07 14:50:01 2016 Bastien DHIVER
+** Last update Mon Feb 08 13:37:35 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -24,10 +24,8 @@ void    tests_free_again(char *tmp, char *tmp2, char *tmp3, void *old_break)
   ast(sbrk(0) == old_break);
   tmp = malloc(8192);
   tmp2 = malloc(2);
-  show_alloc_mem_all();
   free(tmp);
   free(tmp2);
-  show_alloc_mem_all();
   ast(start_point == NULL);
   ast(end_point == NULL);
   ast(sbrk(0) == old_break);
