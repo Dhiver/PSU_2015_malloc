@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Thu Feb 04 12:29:30 2016 Bastien DHIVER
-** Last update Fri Feb 05 00:31:54 2016 Bastien DHIVER
+** Last update Mon Feb 08 09:51:24 2016 Bastien DHIVER
 */
 
 #include "my_assert.h"
@@ -32,11 +32,12 @@ int	__ast(const char *file, size_t line, const char *fct, const char *e)
 	strlen(program_invocation_short_name));
   write(1, ": ", 2);
   write(1, file, strlen(file));
+  write(1, ":", 1);
   __ast_print_nbr(line);
-  write(1, ": ", 2);
+  write(1, " ", 1);
   write(1, fct, strlen(fct));
   write(1, ": Assertion `", 13);
   write(1, e, strlen(e));
   write(1, "' failed.\n", 10);
-  exit(1);
+  abort();
 }
