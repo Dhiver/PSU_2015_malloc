@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Mon Feb 08 14:51:12 2016 Bastien DHIVER
+** Last update Mon Feb 08 16:55:07 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -24,7 +24,6 @@ void    tests_free_again2(char *tmp, char *tmp2)
   tmp2 = malloc(5242880);
   free(tmp2);
   ast(((t_block)tmp2-META_SIZE)->size < 4096);
-  show_alloc_mem_all();
   tmp2 = malloc(2);
   i = 1;
   while (i <= 1024)
@@ -33,9 +32,7 @@ void    tests_free_again2(char *tmp, char *tmp2)
       i *= 2;
     }
   tmp2 = malloc(12288);
-  show_alloc_mem_all();
   (void)tmp;
-  (void)tmp2;
 }
 
 void    tests_free_again(char *tmp, char *tmp2, char *tmp3, void *old_break)
