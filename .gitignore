@@ -6,3 +6,4 @@ a.out
 *.a
 .vscode/
 moul_malloc_stud
+run_for_tests
