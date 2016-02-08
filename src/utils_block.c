@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Mon Feb 08 18:15:45 2016 Bastien DHIVER
+** Last update Mon Feb 08 19:12:20 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -88,13 +88,13 @@ void		merge_block(t_block *blk)
   *blk = first;
 }
 
-void		copy_block(t_block old_blk, t_block new_blk)
+void		copy_data(t_block old_blk, t_block new_blk)
 {
   size_t	i;
 
   if (new_blk->size < old_blk->size)
     return ;
-  i = 0;
+  i = META_SIZE;
   while (i < old_blk->size)
     {
       new_blk[i] = old_blk[i];

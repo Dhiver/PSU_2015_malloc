@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:40:08 2016 Bastien DHIVER
-** Last update Mon Feb 08 18:57:35 2016 Bastien DHIVER
+** Last update Mon Feb 08 19:11:59 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -20,13 +20,14 @@ void		*realloc_merge(t_block ptr, size_t size)
   if (ptr->size < size)
     {
       tmp = malloc(size);
-      copy_block(ptr_sav, (t_block)((char *)tmp - META_SIZE));
+      copy_data(ptr_sav, (t_block)((char *)tmp - META_SIZE));
       free(ptr);
       return (tmp);
     }
   else
     {
-      copy_block(ptr_sav, ptr);
+      split_block(ptr, size);
+      copy_data(ptr_sav, ptr);
       return (ptr->ptr);
     }
 }
