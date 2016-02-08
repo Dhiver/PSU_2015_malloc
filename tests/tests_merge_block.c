@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Feb 03 17:30:43 2016 Bastien DHIVER
-** Last update Mon Feb 08 13:01:13 2016 Bastien DHIVER
+** Last update Mon Feb 08 15:30:43 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -34,12 +34,12 @@ void		tests_merge_block(void)
   tmp4 = create_block(4096);
   tmp2->free = 0;
   sav_size = tmp3->size + tmp4->size + META_SIZE;
-  merge_block(tmp3);
+  merge_block(&tmp3);
   ast(tmp2->next == tmp3);
   ast(tmp3->size == sav_size);
   ast(tmp3->next == NULL);
   tmp2->free = 1;
-  merge_block(tmp3);
+  merge_block(&tmp3);
   ast(start_point == tmp);
   ast(end_point == tmp);
   ast(tmp->free == 1);

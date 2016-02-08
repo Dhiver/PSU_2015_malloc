@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Mon Feb 08 13:35:12 2016 Bastien DHIVER
+** Last update Mon Feb 08 15:30:21 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -48,15 +48,15 @@ t_block		find_block(t_block *ptr, size_t size)
   return (tmp);
 }
 
-void		merge_block(t_block blk)
+void		merge_block(t_block *blk)
 {
   t_block	tmp;
   t_block	first;
   size_t	size;
 
-  tmp = blk;
+  tmp = *blk;
   size = 0;
-  if (!blk || blk->free == 0)
+  if (!blk || !*blk || (*blk)->free == 0)
     return ;
   while (tmp && tmp->free && tmp->prev && tmp->prev->free)
     {
@@ -65,7 +65,7 @@ void		merge_block(t_block blk)
     }
   size += tmp->size;
   first = tmp;
-  tmp = blk->next;
+  tmp = (*blk)->next;
   while (tmp && tmp->free && tmp->next && tmp->next->free)
     {
       size += tmp->size + META_SIZE;
@@ -85,6 +85,7 @@ void		merge_block(t_block blk)
       first->next = NULL;
     }
   first->size = size;
+  *blk = first;
 }
 
 void			copy_block(t_block old_blk, t_block new_blk)

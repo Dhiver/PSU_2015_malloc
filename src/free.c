@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Mon Feb 08 13:43:27 2016 Bastien DHIVER
+** Last update Mon Feb 08 15:31:00 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -20,7 +20,7 @@ void		free(void *ptr)
   if (!(tmp = get_block(ptr)) && tmp->free)
     return ;
   tmp->free = 1;
-  merge_block(tmp);
+  merge_block(&tmp);
   if (tmp == end_point && tmp->free)
   {
     nb_page  = get_nb_page(tmp) + 1;
