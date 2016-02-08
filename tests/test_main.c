@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:05 2016 Bastien DHIVER
-** Last update Thu Feb 04 17:57:41 2016 Bastien DHIVER
+** Last update Mon Feb 08 17:54:41 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -19,6 +19,14 @@ void	reset_end_and_start_points(void)
 void	reset_env(void)
 {
   reset_end_and_start_points();
+}
+
+void	unit_tests_again(void)
+{
+  tests_bzero();
+  reset_env();
+  tests_calloc();
+  reset_env();
 }
 
 int     main(void)
@@ -43,6 +51,7 @@ int     main(void)
   reset_env();
   tests_free();
   reset_env();
+  unit_tests_again();
   printf("\033[34;1m END TESTS \033[0m\n");
   return (0);
 }
