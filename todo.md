@@ -10,3 +10,5 @@
 - [ ] Remove -g flag
 - [ ] Test on a 32 bit arch
 - [ ] Threads
+- [ ] Set free to -1 when merge
+- [ ] malloc(0) ?
