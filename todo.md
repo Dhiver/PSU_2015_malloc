@@ -15,3 +15,4 @@
 - [ ] What if break point is after rlimit
 - [ ] Split merge\_block()
 - [ ] Fill calloc unit tests
+- [ ] Do a macro for getpagesize()
