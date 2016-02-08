@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:36:19 2016 Bastien DHIVER
-** Last update Thu Feb 04 16:51:39 2016 Bastien DHIVER
+** Last update Mon Feb 08 15:30:20 2016 Bastien DHIVER
 */
 
 #ifndef MALLOC_H_
@@ -42,7 +42,7 @@ size_t			get_nb_page(t_block);
 
 t_block			create_block(size_t);
 t_block			find_block(t_block *, size_t);
-void			merge_block(t_block);
+void			merge_block(t_block *);
 void			copy_block(t_block, t_block);
 bool			split_block(t_block, size_t);
 
