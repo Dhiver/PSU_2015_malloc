@@ -23,6 +23,8 @@ void    tests_free_again2(char *tmp, char *tmp2)
   free(tmp2);
   tmp2 = malloc(5242880);
   free(tmp2);
+  ast(((t_block)tmp2-META_SIZE)->size < 4096);
+  show_alloc_mem_all();
   tmp2 = malloc(2);
   i = 1;
   while (i <= 1024)
