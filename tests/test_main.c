@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 15:49:05 2016 Bastien DHIVER
-** Last update Mon Feb 08 17:54:41 2016 Bastien DHIVER
+** Last update Mon Feb 08 18:44:05 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -26,6 +26,8 @@ void	unit_tests_again(void)
   tests_bzero();
   reset_env();
   tests_calloc();
+  reset_env();
+  tests_realloc();
   reset_env();
 }
 
