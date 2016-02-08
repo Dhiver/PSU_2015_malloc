@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Mon Feb 08 15:31:00 2016 Bastien DHIVER
+** Last update Mon Feb 08 16:21:47 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -37,6 +37,7 @@ void		free(void *ptr)
         }
     }
     brk((char*)start_point + (nb_page * getpagesize()));
+    tmp->size -= ((tmp->size / getpagesize()) * getpagesize());
   }
   if (start_point == end_point && ((t_block)end_point)->free)
     {
