@@ -13,3 +13,4 @@
 - [ ] Set free to -1 when merge
 - [ ] malloc(0) ?
 - [ ] What if break point is after rlimit
+- [ ] Split merge_block()
