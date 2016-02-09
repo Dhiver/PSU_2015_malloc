@@ -16,3 +16,5 @@
 - [ ] Set free to -1 when merge
 - [ ] malloc(0) ?
 - [ ] What if break point is after rlimit
+- [ ] Rethink merge\_block() and free()
+- [ ] Improve speed on big malloc/free
