@@ -4,6 +4,7 @@
 - [x] Réaliser un main de test
 - [x] Split merge\_block()
 - [x] Do a macro for getpagesize()
+- [x] Fill calloc unit tests
 - [ ] Gestion d'erreurs
 - [ ] Opti free (brk dans un block 2 pages ou plus)
 - [ ] realloc
@@ -15,4 +16,3 @@
 - [ ] Set free to -1 when merge
 - [ ] malloc(0) ?
 - [ ] What if break point is after rlimit
-- [ ] Fill calloc unit tests
