@@ -5,10 +5,33 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Tue Feb 02 16:40:46 2016 Bastien DHIVER
-** Last update Mon Feb 08 16:55:07 2016 Bastien DHIVER
+** Last update Tue Feb 09 21:30:44 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
+
+void	tests_free_forever(void)
+{
+  char	*tmp;
+  char	*tmp2;
+  char	*tmp3;
+  char	*tmp4;
+
+  start_point = NULL;
+  end_point = NULL;
+  tmp = malloc(568);
+  tmp2 = malloc(1600);
+  tmp3 = malloc(1024);
+  tmp4 = malloc(2048);
+  free(tmp3);
+  free(tmp);
+  ast(start_point == (t_block)((char *)tmp - META_SIZE));
+  ast(((t_block)start_point)->size == align_size(568));
+  ast(((t_block)start_point)->free == 1);
+  ast(((t_block)start_point)->prev == NULL);
+  ast(((t_block)start_point)->next == (t_block)((char *)tmp2 - META_SIZE));
+  (void)tmp4;
+}
 
 void    tests_free_again2(char *tmp, char *tmp2)
 {
@@ -33,6 +56,7 @@ void    tests_free_again2(char *tmp, char *tmp2)
     }
   tmp2 = malloc(12288);
   (void)tmp;
+  tests_free_forever();
 }
 
 void    tests_free_again(char *tmp, char *tmp2, char *tmp3, void *old_break)
