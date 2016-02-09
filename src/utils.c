@@ -5,9 +5,10 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 11:59:58 2016 Bastien DHIVER
-** Last update Tue Feb 09 09:43:13 2016 Bastien DHIVER
+** Last update Tue Feb 09 15:30:26 2016 Bastien DHIVER
 */
 
+#include <string.h>
 #include "malloc.h"
 
 t_block		get_block(void *ptr)
@@ -32,9 +33,9 @@ void		copy_data(t_block old_blk, t_block new_blk)
   if (new_blk->size < old_blk->size)
     return ;
   i = META_SIZE;
-  while (i < old_blk->size)
+  while (i < old_blk->size + META_SIZE)
     {
-      new_blk[i] = old_blk[i];
+      ((char *)new_blk)[i] = ((char *)old_blk)[i];
       i++;
     }
 }
