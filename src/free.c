@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Tue Feb 09 11:14:32 2016 Bastien DHIVER
+** Last update Tue Feb 09 21:41:17 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -27,7 +27,7 @@ bool		free_at_page_end(t_block tmp)
 	  return (TRUE);
 	}
     }
-  brk((char*)start_point + (nb_page * PAGE_SIZE));
+  brk((char *)start_point + (nb_page * PAGE_SIZE));
   tmp->size -= ((tmp->size / PAGE_SIZE) * PAGE_SIZE);
   return (FALSE);
 }
@@ -36,19 +36,34 @@ void		free(void *ptr)
 {
   t_block	tmp;
 
+  /*printf("free(%p)\n", ptr);*/
   if (!ptr || !check_addr(ptr))
-    return ;
+    {
+      /*printf("free(%p) does nothing\n", ptr);*/
+      /*show_alloc_mem_all();*/
+      return ;
+    }
   if (!(tmp = get_block(ptr)) && tmp->free)
-    return ;
+    {
+      /*printf("free(%p) does nothing\n", ptr);*/
+      /*show_alloc_mem_all();*/
+      return ;
+    }
   tmp->free = 1;
   merge_block(&tmp);
   if (tmp == end_point && tmp->free)
     if (free_at_page_end(tmp))
-      return ;
+      {
+	/*printf("free(%p) does nothing\n", ptr);*/
+	/*show_alloc_mem_all();*/
+	return ;
+      }
   if (start_point == end_point && ((t_block)end_point)->free)
     {
       brk(start_point);
       start_point = NULL;
       end_point = NULL;
     }
+  /*printf("free -> OK\n");*/
+  /*show_alloc_mem_all();*/
 }
