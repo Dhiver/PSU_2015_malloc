@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Tue Feb 09 13:28:15 2016 Bastien DHIVER
+** Last update Tue Feb 09 22:13:33 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -85,6 +85,8 @@ void		merge_block(t_block *blk)
   size += tmp->size;
   first = tmp;
   tmp = (*blk)->next;
+  if (tmp && !tmp->free)
+    return ;
   while (tmp && tmp->free && tmp->next && tmp->next->free)
     {
       size += tmp->size + META_SIZE;
