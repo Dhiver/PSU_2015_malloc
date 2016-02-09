@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 08 16:57:08 2016 Bastien DHIVER
-** Last update Tue Feb 09 11:31:35 2016 Bastien DHIVER
+** Last update Tue Feb 09 12:48:36 2016 Bastien DHIVER
 */
 
 #include <string.h>
@@ -14,11 +14,10 @@
 void		*calloc(size_t nelem, size_t elsize)
 {
   void		*p;
-  size_t	sum;
+  size_t	mul;
 
-  sum = nelem + elsize;
-  if ((p = malloc(sum)) == NULL)
-    return (p);
-  memset(p, '\0', sum);
+  mul = nelem * elsize;
+  if ((p = malloc(mul)))
+    memset(p, '\0', mul);
   return (p);
 }
