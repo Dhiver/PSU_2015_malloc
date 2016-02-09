@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 11:59:58 2016 Bastien DHIVER
-** Last update Mon Feb 08 14:51:49 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:13:05 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -25,22 +25,16 @@ bool		check_addr(void *ptr)
     return (FALSE);
 }
 
-void		free_memory(void)
+void		copy_data(t_block old_blk, t_block new_blk)
 {
-  t_block	tmp;
-  size_t	page_size;
+  size_t	i;
 
-  page_size = getpagesize();
-  tmp = end_point;
-  if (tmp->size >= page_size)
+  if (new_blk->size < old_blk->size)
+    return ;
+  i = META_SIZE;
+  while (i < old_blk->size)
     {
-      if (tmp->size == page_size)
-	  if ((size_t)tmp / page_size ==
-	      ((size_t)tmp + tmp->size + META_SIZE) / page_size)
-	    {
-	      end_point = tmp->prev;
-	      brk(tmp);
-	      return ;
-	    }
+      new_blk[i] = old_blk[i];
+      i++;
     }
 }

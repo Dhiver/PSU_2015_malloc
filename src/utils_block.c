@@ -5,15 +5,15 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Mon Feb 08 19:12:20 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:13:04 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
 
-t_block			create_block(size_t size)
+t_block		create_block(size_t size)
 {
-  t_block		out;
-  size_t		new_size;
+  t_block	out;
+  size_t	new_size;
 
   out = sbrk(0);
   new_size = align_page(align_size(size) + META_SIZE);
@@ -48,6 +48,24 @@ t_block		find_block(t_block *ptr, size_t size)
   return (tmp);
 }
 
+void	merge_block_linking(size_t size, t_block tmp, t_block first)
+{
+  if (tmp)
+    {
+      size += tmp->size + META_SIZE;
+      first->next = tmp->next;
+      tmp->prev = first;
+      if (!tmp->next)
+	end_point = first;
+    }
+  else
+    {
+      end_point = first;
+      first->next = NULL;
+    }
+  first->size = size;
+}
+
 void		merge_block(t_block *blk)
 {
   t_block	tmp;
@@ -71,35 +89,8 @@ void		merge_block(t_block *blk)
       size += tmp->size + META_SIZE;
       tmp = tmp->next;
     }
-  if (tmp)
-    {
-      size += tmp->size + META_SIZE;
-      first->next = tmp->next;
-      tmp->prev = first;
-      if (!tmp->next)
-	end_point = first;
-    }
-  else
-    {
-      end_point = first;
-      first->next = NULL;
-    }
-  first->size = size;
+  merge_block_linking(size, tmp, first);
   *blk = first;
-}
-
-void		copy_data(t_block old_blk, t_block new_blk)
-{
-  size_t	i;
-
-  if (new_blk->size < old_blk->size)
-    return ;
-  i = META_SIZE;
-  while (i < old_blk->size)
-    {
-      new_blk[i] = old_blk[i];
-      i++;
-    }
 }
 
 bool		split_block(t_block blk, size_t size)
