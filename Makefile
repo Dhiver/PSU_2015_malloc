@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Wed Jan 27 15:24:21 2016 Bastien DHIVER
-## Last update Mon Feb 08 17:30:07 2016 Bastien DHIVER
+## Last update Tue Feb 09 09:44:51 2016 Bastien DHIVER
 ##
 
 CC	= gcc
@@ -27,12 +27,11 @@ NAME	= libmy_malloc.so
 SRCS	= $(SRCF)malloc.c		\
 	  $(SRCF)free.c			\
 	  $(SRCF)realloc.c		\
+	  $(SRCF)calloc.c		\
 	  $(SRCF)show_alloc_mem.c	\
-	  $(SRCF)utils_block.c		\
+	  $(SRCF)align.c
 	  $(SRCF)utils.c           	\
-	  $(SRCF)utils_page.c           \
-	  $(SRCF)align.c		\
-	  $(SRCF)calloc.c
+	  $(SRCF)utils_block.c		\
       
 OBJS	= $(SRCS:.c=.o)
 

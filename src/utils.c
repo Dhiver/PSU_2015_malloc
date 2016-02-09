@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 11:59:58 2016 Bastien DHIVER
-** Last update Tue Feb 09 09:13:05 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:43:13 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -37,4 +37,14 @@ void		copy_data(t_block old_blk, t_block new_blk)
       new_blk[i] = old_blk[i];
       i++;
     }
+}
+
+size_t		get_nb_page(t_block tmp)
+{
+    size_t	j;
+
+    j = ((char*)tmp - (char*)start_point) / PAGE_SIZE;
+    if ((((char*)tmp - (char*)start_point) % PAGE_SIZE) > 0)
+      j += 1;
+    return (j);
 }

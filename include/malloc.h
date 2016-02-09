@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:36:19 2016 Bastien DHIVER
-** Last update Tue Feb 09 09:29:24 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:43:08 2016 Bastien DHIVER
 */
 
 #ifndef MALLOC_H_
@@ -30,26 +30,24 @@ extern void		*end_point;
 void			*malloc(size_t);
 void			*realloc(void *, size_t);
 void			free(void *);
+void			*calloc(size_t, size_t);
+
 void			show_alloc_mem(void);
 void			show_alloc_mem_free(void);
 void			show_alloc_mem_all(void);
 
 bool			check_addr(void *);
 t_block			get_block(void *);
-size_t			align_page(size_t);
-void			free_memory(void);
-
+void			copy_data(t_block, t_block);
 size_t			get_nb_page(t_block);
 
 t_block			create_block(size_t);
 t_block			find_block(t_block *, size_t);
 void			merge_block(t_block *);
-void			copy_data(t_block, t_block);
 bool			split_block(t_block, size_t);
 
 size_t			align_size(size_t);
 size_t			align_page(size_t);
 
-void			*calloc(size_t, size_t);
 
 #endif /* !MALLOC_H_ */
