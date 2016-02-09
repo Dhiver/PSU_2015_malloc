@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 01 13:37:17 2016 Bastien DHIVER
-** Last update Tue Feb 09 09:13:04 2016 Bastien DHIVER
+** Last update Tue Feb 09 13:28:15 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -54,7 +54,8 @@ void	merge_block_linking(size_t size, t_block tmp, t_block first)
     {
       size += tmp->size + META_SIZE;
       first->next = tmp->next;
-      tmp->prev = first;
+      if (tmp->next)
+	tmp->next->prev = first;
       if (!tmp->next)
 	end_point = first;
     }
