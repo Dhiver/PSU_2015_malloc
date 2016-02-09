@@ -5,9 +5,9 @@
 - [x] Split merge\_block()
 - [x] Do a macro for getpagesize()
 - [x] Fill calloc unit tests
+- [x] Opti free (brk dans un block 2 pages ou plus)
+- [x] realloc
 - [ ] Gestion d'erreurs
-- [ ] Opti free (brk dans un block 2 pages ou plus)
-- [ ] realloc
 - [ ] Create block merge avec dernier end\_point
 - [ ] Au départ, le break point est-il au tout début de la heap ?
 - [ ] Remove -g flag
