@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 08 18:34:58 2016 Bastien DHIVER
-** Last update Mon Feb 08 19:07:00 2016 Bastien DHIVER
+** Last update Tue Feb 09 21:34:22 2016 Bastien DHIVER
 */
 
 #include "test_main.h"
@@ -28,5 +28,6 @@ void	tests_realloc(void)
   tmp = realloc(tmp, 4099);
   ast(((t_block)((char *)tmp - META_SIZE))->size == align_size(4099));
   tmp = realloc(tmp, 0);
-  ast(((t_block)((char *)tmp - META_SIZE))->size == align_size(0));
+  ast(start_point == NULL);
+  ast(end_point == NULL);
 }
