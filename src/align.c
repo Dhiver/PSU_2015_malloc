@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Thu Feb 04 10:28:32 2016 Bastien DHIVER
-** Last update Thu Feb 04 10:54:59 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:34:09 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -19,10 +19,7 @@ size_t		align_size(size_t size)
 
 size_t		align_page(size_t size)
 {
-  int		page_size;
-
-  page_size = getpagesize();
   if (size == 0)
-    return (page_size);
-  return ((size - 1) / page_size * page_size + page_size);
+    return (PAGE_SIZE);
+  return ((size - 1) / PAGE_SIZE * PAGE_SIZE + PAGE_SIZE);
 }

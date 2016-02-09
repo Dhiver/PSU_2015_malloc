@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:36:19 2016 Bastien DHIVER
-** Last update Mon Feb 08 19:11:29 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:29:24 2016 Bastien DHIVER
 */
 
 #ifndef MALLOC_H_
@@ -16,6 +16,7 @@
 # include "malloc_struct.h"
 
 # define META_SIZE	sizeof(struct s_block)
+# define PAGE_SIZE	getpagesize()
 
 typedef	enum		e_bool
 {

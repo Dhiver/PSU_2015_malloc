@@ -13,6 +13,6 @@
 - [ ] Set free to -1 when merge
 - [ ] malloc(0) ?
 - [ ] What if break point is after rlimit
-- [ ] Split merge\_block()
+- [x] Split merge\_block()
 - [ ] Fill calloc unit tests
-- [ ] Do a macro for getpagesize()
+- [x] Do a macro for getpagesize()

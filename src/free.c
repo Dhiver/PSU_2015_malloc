@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Mon Feb 08 16:21:47 2016 Bastien DHIVER
+** Last update Tue Feb 09 09:33:55 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -13,7 +13,7 @@
 void		free(void *ptr)
 {
   t_block	tmp;
-  size_t    nb_page;
+  size_t	nb_page;
 
   if (!ptr || !check_addr(ptr))
     return ;
@@ -24,7 +24,7 @@ void		free(void *ptr)
   if (tmp == end_point && tmp->free)
   {
     nb_page  = get_nb_page(tmp) + 1;
-    if (nb_page * getpagesize() - META_SIZE == tmp->size)
+    if (nb_page * PAGE_SIZE - META_SIZE == tmp->size)
     {
         if (tmp->prev)
             end_point = tmp->prev;
@@ -36,8 +36,8 @@ void		free(void *ptr)
             return ;
         }
     }
-    brk((char*)start_point + (nb_page * getpagesize()));
-    tmp->size -= ((tmp->size / getpagesize()) * getpagesize());
+    brk((char*)start_point + (nb_page * PAGE_SIZE));
+    tmp->size -= ((tmp->size / PAGE_SIZE) * PAGE_SIZE);
   }
   if (start_point == end_point && ((t_block)end_point)->free)
     {
