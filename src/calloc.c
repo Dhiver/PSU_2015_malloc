@@ -5,21 +5,31 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Mon Feb 08 16:57:08 2016 Bastien DHIVER
-** Last update Tue Feb 09 21:41:33 2016 Bastien DHIVER
+** Last update Wed Feb 10 13:42:48 2016 Jarry Maxime
 */
 
 #include <string.h>
 #include "malloc.h"
 
-void		*calloc(size_t nelem, size_t elsize)
+void		*calloc_func(size_t nelem, size_t elsize)
 {
   void		*p;
   size_t	mul;
 
-  /*printf("calloc(%ld, %ld)\n", nelem, elsize);*/
+
   mul = nelem * elsize;
-  if ((p = malloc(mul)))
+  if ((p = malloc_func(mul)))
     memset(p, '\0', mul);
-  /*printf("calloc(%ld, %ld) return %p\n", nelem, elsize, p);*/
+
   return (p);
+}
+
+void		*calloc(size_t nelem, size_t elsize)
+{
+  void		*back;
+  
+  pthread_mutex_lock(&lock);
+  back = calloc_func(nelem, elsize);
+  pthread_mutex_unlock(&lock);
+  return (back);
 }
