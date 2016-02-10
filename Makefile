@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Wed Jan 27 15:24:21 2016 Bastien DHIVER
-## Last update Tue Feb 09 09:47:20 2016 Bastien DHIVER
+## Last update Wed Feb 10 01:06:12 2016 Jarry Maxime
 ##
 
 CC	= gcc
@@ -17,6 +17,7 @@ CFLAGS	+= -Werror
 CFLAGS	+= -fPIC
 CFLAGS	+= -I./include/
 CFLAGS	+= -g
+CFLAGS  += -lpthread
 
 LDFLAGS	= -shared
 
