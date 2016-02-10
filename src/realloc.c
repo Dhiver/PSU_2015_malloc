@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:40:08 2016 Bastien DHIVER
-** Last update Tue Feb 09 21:40:36 2016 Bastien DHIVER
+** Last update Wed Feb 10 13:43:21 2016 Jarry Maxime
 */
 
 #include "malloc.h"
@@ -19,44 +19,47 @@ void		*realloc_merge(t_block ptr, size_t size)
   merge_block(&ptr);
   if (ptr->size < size)
     {
-      tmp = malloc(size);
+      tmp = malloc_func(size);
       copy_data(ptr_sav, (t_block)((char *)tmp - META_SIZE));
-      free(ptr->ptr);
-      /*printf("realloc(%p, %ld) return %p is %d\n", (char *)ptr + META_SIZE, size, tmp, ((char *)tmp)[0]);*/
-      /*show_alloc_mem_all();*/
+      free_func(ptr->ptr);
       return (tmp);
     }
   else
     {
       split_block(ptr, size);
       copy_data(ptr_sav, ptr);
-      /*printf("realloc(%p, %ld) return %p is %d\n", (char *)ptr + META_SIZE, size, ptr->ptr, ((char *)ptr->ptr)[0]);*/
-      /*show_alloc_mem_all();*/
       return (ptr->ptr);
     }
 }
 
-void		*realloc(void *ptr, size_t size)
+void		*realloc_func(void *ptr, size_t size)
 {
   t_block	tmp;
+  void		*back;
 
-  /*printf("realloc(%p, %ld)\n", ptr, size);*/
   if (!ptr)
-    return (malloc(size));
+    {
+      back = malloc_func(size);
+      return (back);
+    }
   if (!size)
     {
-      free(ptr);
+      free_func(ptr);
       return (NULL);
     }
   if (!check_addr(ptr))
-    {
-      /*printf("realloc does nothing\n");*/
-      return (NULL);
-    }
+    return (NULL);
   if ((tmp = get_block(ptr)) == NULL)
-    {
-      /*printf("realloc does nothing\n");*/
-      return (NULL);
-    }
+    return (NULL);
   return (realloc_merge(tmp, size));
+}
+
+void		*realloc(void *ptr, size_t size)
+{
+  void		*back;
+  
+  pthread_mutex_lock(&lock);
+  back = realloc_func(ptr, size);
+  pthread_mutex_unlock(&lock);
+  return (back);
 }
