@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:39:37 2016 Bastien DHIVER
-** Last update Tue Feb 09 21:41:17 2016 Bastien DHIVER
+** Last update Wed Feb 10 13:43:14 2016 Jarry Maxime
 */
 
 #include "malloc.h"
@@ -32,38 +32,30 @@ bool		free_at_page_end(t_block tmp)
   return (FALSE);
 }
 
-void		free(void *ptr)
+void		free_func(void *ptr)
 {
   t_block	tmp;
 
-  /*printf("free(%p)\n", ptr);*/
   if (!ptr || !check_addr(ptr))
-    {
-      /*printf("free(%p) does nothing\n", ptr);*/
-      /*show_alloc_mem_all();*/
-      return ;
-    }
+    return ;
   if (!(tmp = get_block(ptr)) && tmp->free)
-    {
-      /*printf("free(%p) does nothing\n", ptr);*/
-      /*show_alloc_mem_all();*/
-      return ;
-    }
+    return ;
   tmp->free = 1;
   merge_block(&tmp);
   if (tmp == end_point && tmp->free)
     if (free_at_page_end(tmp))
-      {
-	/*printf("free(%p) does nothing\n", ptr);*/
-	/*show_alloc_mem_all();*/
-	return ;
-      }
+      return ;
   if (start_point == end_point && ((t_block)end_point)->free)
     {
       brk(start_point);
       start_point = NULL;
       end_point = NULL;
     }
-  /*printf("free -> OK\n");*/
-  /*show_alloc_mem_all();*/
+}
+
+void		free(void *ptr)
+{
+  pthread_mutex_lock(&lock);
+  free_func(ptr);
+  pthread_mutex_unlock(&lock);
 }
