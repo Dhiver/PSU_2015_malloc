@@ -5,7 +5,7 @@
 ** Login   <dhiver_b@epitech.net>
 ** 
 ** Started on  Wed Jan 27 15:40:08 2016 Bastien DHIVER
-** Last update Wed Feb 10 13:43:21 2016 Jarry Maxime
+** Last update Wed Feb 10 16:41:31 2016 Bastien DHIVER
 */
 
 #include "malloc.h"
@@ -57,7 +57,7 @@ void		*realloc_func(void *ptr, size_t size)
 void		*realloc(void *ptr, size_t size)
 {
   void		*back;
-  
+
   pthread_mutex_lock(&lock);
   back = realloc_func(ptr, size);
   pthread_mutex_unlock(&lock);
