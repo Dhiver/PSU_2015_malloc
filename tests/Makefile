@@ -5,7 +5,7 @@
 ## Login   <dhiver_b@epitech.net>
 ## 
 ## Started on  Tue Feb 02 15:45:14 2016 Bastien DHIVER
-## Last update Tue Feb 09 12:35:23 2016 Bastien DHIVER
+## Last update Sun Feb 14 19:57:15 2016 Bastien DHIVER
 ##
 
 CC	= gcc
@@ -14,7 +14,6 @@ RM	= rm -f
 
 CFLAGS	+= -W -Wall -Wextra -pedantic
 CFLAGS	+= -Werror
-CFLAGS	+= -g
 CFLAGS	+= -I../include/ -I.
 
 SLIB	= ../libmy_malloc.so
